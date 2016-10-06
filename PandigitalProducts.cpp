@@ -1,6 +1,6 @@
-#include <string>
+#include <sstream>
 #include <iostream>
-#include <algorithm> // std::min
+#include <algorithm> // std::sort
 #include <vector>
 using namespace std;
 
@@ -25,10 +25,12 @@ bool isPandigital(string s) {
  * Ex. 192, (1,2,3) -> 192384576
  */
 int concatenateProducts(int n, vector<int> v) {
-    string ans = "";
+    stringstream tmp;
     for (int i : v) {
-        ans += to_string(n * i);
+        tmp << to_string(n * i);
     }
+    string ans;
+    tmp >> ans;
     return stoi(ans);
 }
 
@@ -49,20 +51,32 @@ int largestPandigital(vector<int> v, int largest, int start, int stop) {
 }
  
 int main() {
-    vector<int> v = {1, 2};
     int largest = 0;
+    
+    // Check from 500,010,000 to 999,919,998
+    vector<int> v = {1, 2};
     largest = largestPandigital(v, largest, 5000, 10000);
+    
+    // Check from 100,200,300 to 333,666,999
     v.push_back(3);
     largest = largestPandigital(v, largest, 100, 333);
+    
+    // Check from 255,075,100 to 336,699,132
     v.push_back(4);
     largest = largestPandigital(v, largest, 25, 33);
+    
+    // Check 918,273,645
     v.push_back(5);
     largest = largestPandigital(v, largest, 9, 10);
+    
+    // Check 123,456,789
     v.push_back(6);
     v.push_back(7);
     v.push_back(8);
     v.push_back(9);
     largest = largestPandigital(v, largest, 1, 2);
+    
+    // Display the result
     cout << largest << endl;
     return 0;
 }

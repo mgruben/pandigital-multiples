@@ -40,7 +40,7 @@ int largestPandigital(vector<int> v, int largest, int start, int stop) {
     int thisProd;
     for (int j = start; j < stop; j++) {
         thisProd = concatenateProducts(j, v);
-        if (isPandigital(to_string(thisProd)) && 
+        if (isPandigital(to_string(thisProd)) &&
             thisProd > largest) {
             largest = thisProd;
         }
@@ -51,6 +51,18 @@ int largestPandigital(vector<int> v, int largest, int start, int stop) {
 int main() {
     vector<int> v = {1, 2};
     int largest = 0;
-    cout << largestPandigital(v, largest, 5000, 10000) << endl;
+    largest = largestPandigital(v, largest, 5000, 10000);
+    v.push_back(3);
+    largest = largestPandigital(v, largest, 100, 333);
+    v.push_back(4);
+    largest = largestPandigital(v, largest, 25, 33);
+    v.push_back(5);
+    largest = largestPandigital(v, largest, 9, 10);
+    v.push_back(6);
+    v.push_back(7);
+    v.push_back(8);
+    v.push_back(9);
+    largest = largestPandigital(v, largest, 1, 2);
+    cout << largest << endl;
     return 0;
 }

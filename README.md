@@ -1,10 +1,10 @@
 # pandigital-multiples 
-Find the largest 1-to-9 pandigital number formed by concatenating products.
+Find the largest 9-digit pandigital multiple.
 
 An n-digit number is pandigital if that number contains the digits 1 through n exactly once, in any order.  
 * Ex. `321789654` is pandigital, since it contains `1, 2, 3, 4, 5, 6, 7, 8, and 9`, and is `9` digits.
 
-If a 9-digit pandigital number results from the concatenation of an integer product with the set (1, 2, 3, ..., n), then that number is a pandigital multiple.
+If an n-digit pandigital number results from the concatenation of an integer product with the set (1, 2, 3, ..., m), then that number is a pandigital multiple.
 * Ex. `192384576` is a pandigital multiple, since
 ```
 192 × 1 = 192

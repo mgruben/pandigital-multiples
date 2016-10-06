@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
-#include <algorithm>
+#include <algorithm> // std::min
+#include <vector>
 using namespace std;
 
 /**
@@ -18,11 +19,12 @@ bool isPandigital(string s) {
 }
 
 /**
- * Given a number n, return true if there is some factorization
- * of that number which, together with the number itself, is
- * 1-9 pandigital.
+ * Given a number n and a vector v, concatenate the products of each
+ * integer in the vector with the number, and return the concatenation.
+ * 
+ * Ex. 192, (1,2,3) -> 192384576
  */
-bool isOneNineUnusual(int n) {
+string concatenateProducts(int n, vector<int> v) {
     /* For each factor we find, n / (that factor) is itself
      * another factor, so add that to our sum as well.
      * 
@@ -34,34 +36,18 @@ bool isOneNineUnusual(int n) {
         if ((n % i) == 0) {
             s += to_string(i);
             s += to_string(n/i);
-            if (s.length() == 9 && isPandigital(s)) return true;
+            if (s.length() == 9 && isPandigital(s)) return "true";
         }
     }
-    return false;
+    return "false";
 }
 
 /**
- * Find the sum of all products whose factors, concatenated with
- * the product, is 1-9 pandigital.
- * 
- * This of course means that the maximum length of the concatenated
- * string is 9, meaning that a 5-digit number is not possible (since,
- * at minimum, it would require a 3-digit and a 2-digit factor, for
- * a total of 10 digits).
- * 
- * Accordingly, only check up to 9999 (99*101) inclusive.
- * 
- * Additionally, there is no way to arrive at a 9-digit concatenation
- * without the product being 4 digits.  Products of less than 4 digits
- * will have factors of less than 5 digits, concatenated.
- * 
- * Accordingly, only check from 1000 (1000 * 1) inclusive. 
+ * Find the largest 1-9 pandigital number that can be formed as the
+ * concatenated product of (1, 2, 3, ..., n) and an integer,
  */
 int main() {
-    int sum = 0;
-    for (int i = 1000; i < 10000; i++) {
-        if (isOneNineUnusual(i)) sum += i;
-    }
-    cout << sum << endl;
+        vector<int> v = {1};
+        
     return 0;
 }

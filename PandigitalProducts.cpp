@@ -36,26 +36,21 @@ int concatenateProducts(int n, vector<int> v) {
  * Find the largest 1-9 pandigital number that can be formed as the
  * concatenated product of (1, 2, 3, ..., n) and an integer,
  */
-int largestPandigital() {
-    vector<int> v = {1};
-    int largest = 0;
-    for (int i = 2; i < 9; i++) {
-        v.push_back(i);
-        int thisProd;
-        if (v.size() == 2) {
-            for (int j = 5000; j < 10000; j++) {
-                thisProd = concatenateProducts(j, v);
-                if (isPandigital(to_string(thisProd)) && 
-                    thisProd > largest) {
-                    largest = thisProd;
-                }
-            }
+int largestPandigital(vector<int> v, int largest, int start, int stop) {
+    int thisProd;
+    for (int j = start; j < stop; j++) {
+        thisProd = concatenateProducts(j, v);
+        if (isPandigital(to_string(thisProd)) && 
+            thisProd > largest) {
+            largest = thisProd;
         }
     }
     return largest;
 }
  
 int main() {
-    cout << largestPandigital() << endl;
+    vector<int> v = {1, 2};
+    int largest = 0;
+    cout << largestPandigital(v, largest, 5000, 10000) << endl;
     return 0;
 }

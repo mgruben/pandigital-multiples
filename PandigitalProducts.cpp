@@ -47,7 +47,7 @@ string concatenateProducts(int n, vector<int> v) {
  * concatenated product of (1, 2, 3, ..., n) and an integer,
  */
 int main() {
-        vector<int> v = {1};
-        
+    vector<int> v = {1,2};
+    
     return 0;
 }

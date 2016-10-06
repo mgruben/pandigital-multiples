@@ -38,19 +38,24 @@ int concatenateProducts(int n, vector<int> v) {
  */
 int largestPandigital() {
     vector<int> v = {1};
-    for (int i = 2; i < 13; i++) {
+    int largest = 0;
+    for (int i = 2; i < 9; i++) {
         v.push_back(i);
-        int n = 0;
-        int largest = 0;
-        int thisProd = concatenateProducts(n, v);
-        if (isPandigital(to_string(thisProd))) {
-            largest = thisProd;
+        int thisProd;
+        if (v.size() == 2) {
+            for (int j = 5000; j < 10000; j++) {
+                thisProd = concatenateProducts(j, v);
+                if (isPandigital(to_string(thisProd)) && 
+                    thisProd > largest) {
+                    largest = thisProd;
+                }
+            }
         }
     }
+    return largest;
 }
  
 int main() {
-    vector<int> v = {1,2,3};
-    cout << concatenateProducts(192, v) << endl;
+    cout << largestPandigital() << endl;
     return 0;
 }

@@ -24,30 +24,33 @@ bool isPandigital(string s) {
  * 
  * Ex. 192, (1,2,3) -> 192384576
  */
-string concatenateProducts(int n, vector<int> v) {
-    /* For each factor we find, n / (that factor) is itself
-     * another factor, so add that to our sum as well.
-     * 
-     * Loop until i = sqrt(n), because this is the limit
-     * for factors of n we haven't found yet.
-     */ 
-    for (int i = 1; i*i <= n; i++) {
-        string s = to_string(n);
-        if ((n % i) == 0) {
-            s += to_string(i);
-            s += to_string(n/i);
-            if (s.length() == 9 && isPandigital(s)) return "true";
-        }
+int concatenateProducts(int n, vector<int> v) {
+    string ans = "";
+    for (int i : v) {
+        ans += to_string(n * i);
     }
-    return "false";
+    return stoi(ans);
 }
 
 /**
  * Find the largest 1-9 pandigital number that can be formed as the
  * concatenated product of (1, 2, 3, ..., n) and an integer,
  */
+int largestPandigital() {
+    vector<int> v = {1};
+    for (int i = 2; i < 13; i++) {
+        v.push_back(i);
+        int n = 0;
+        int largest = 0;
+        int thisProd = concatenateProducts(n, v);
+        if (isPandigital(to_string(thisProd))) {
+            largest = thisProd;
+        }
+    }
+}
+ 
 int main() {
-    vector<int> v = {1,2};
-    
+    vector<int> v = {1,2,3};
+    cout << concatenateProducts(192, v) << endl;
     return 0;
 }

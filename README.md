@@ -6,10 +6,12 @@ An n-digit number is pandigital if that number contains the digits 1 through n e
 
 If a 9-digit pandigital number results from the concatenation of an integer product with the set (1, 2, 3, ..., n), then that number is a pandigital multiple.
 * Ex. `192384576` is a pandigital multiple, since
-`192 × 1 = 192
+```
+192 × 1 = 192
 192 × 2 = 384
 192 × 3 = 576
-192 + 384 + 576 = 192384576`
+192 + 384 + 576 = 192384576
+```
 
 This project was completed for [Project Euler - Problem 38](https://projecteuler.net/problem=38).
 
